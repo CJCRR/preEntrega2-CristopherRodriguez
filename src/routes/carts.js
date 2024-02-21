@@ -9,21 +9,20 @@ const cartManager = new CartManager(__dirname + "../dao/file/manager/cartManager
 const cm = new CartManager()
 const pm = new ProductManager()
 
-const routerC = Router();
+const router = Router();
 
 // Ruta raíz POST /api/carts - Crear un nuevo carrito
-routerC.get("/", async (req, res) => {
+router.get("/", async (req, res) => {
   const carrito = await cm.getCarts()
   res.json({ carrito })
 })
 
 // Ruta raíz GET /api/carts - Listar todos los productos
 
-routerC.get("/:cid", async (req, res) => {
-  const { cid } = req.params
-  const carritofound = await cm.getCartById(cid)
-  res.json({ status: "success", carritofound })
-})
+router.post('/', async (req, res) => {
+  const newCart = await cartManager.createCart();
+  res.status(201).json(newCart);
+});
 
 // Ruta GET /api/carts/:cid - Listar los productos que pertenezcan al carrito con el cid proporcionado
 router.get("/:cid", async (req, res) => {

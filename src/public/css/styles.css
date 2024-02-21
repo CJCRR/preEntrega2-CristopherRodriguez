@@ -1,0 +1,58 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.realTimeProducts h1 {
+  text-align: center;
+}
+.realTimeProducts .box-form {
+  text-align: center;
+  gap: 10px;
+  margin-top: 20px;
+}
+.realTimeProducts .box-form input {
+  border-radius: 10px;
+}
+.realTimeProducts .box-form .box-form-add {
+  display: flex;
+  flex-direction: column;
+}
+.realTimeProducts .box-form .box-form-add .formProducts {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.realTimeProducts .box-form .box-form-add .formProducts .name {
+  width: 100%;
+}
+.realTimeProducts .box-form .box-form-add .formProducts .description {
+  width: 100%;
+}
+.realTimeProducts .box-form .box-form-add .formProducts .thumbnail {
+  width: 100%;
+}
+.realTimeProducts .box-form .box-form-add .formProducts button {
+  margin-top: 10px;
+  width: 200px;
+}
+.realTimeProducts .box-form .box-form-delet .box-form-delet-1 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 100px;
+}
+.realTimeProducts .box-form .box-form-delet .box-form-delet-1 .delete-id {
+  width: 100%;
+}
+.realTimeProducts .box-form .box-form-delet .box-form-delet-1 button {
+  margin-top: 93px;
+  width: 200px;
+}
+
+.box-products-realTime {
+  margin-top: 20px;
+}
+
+/*# sourceMappingURL=styles.css.map */

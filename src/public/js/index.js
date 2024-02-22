@@ -20,6 +20,7 @@ function updateProductList(listProducts) {
           <p class="card-title">${product._id}</p>
           <p class="card-text">Descripcion: ${product.description}</p>
           <p class="card-text">Código: ${product.code}</p>
+          <p class="card-text">categoria: ${product.category}</p>
           <div class="row">
             <p class="card-text col">Stock: ${product.stock}</p>
             <p class="card-text col">Precio: ${product.price}</p>
@@ -41,12 +42,13 @@ form.addEventListener("submit", (evt) => {
   let description = form.elements.description.value;
   let stock = form.elements.stock.value;
   let thumbnail = form.elements.thumbnail.value;
+  let category = form.elements.category.value;
   let price = form.elements.price.value;
   let code = form.elements.code.value;
 
   let status = true; 
   socketClient.emit("addProduct", 
-  {title, description, stock, thumbnail, price, code, status});
+  {title, description, stock, thumbnail, category, price, code, status});
  
   form.reset();
 });

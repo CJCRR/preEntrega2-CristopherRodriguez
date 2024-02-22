@@ -2,13 +2,45 @@ import { productsModel } from "../models/products.model.js"
 
 export default class ProductManager {
 
-    getProducts = async () => {
+    categories = async () => {
+        try {
+            const categories = await productsModel.aggregate([
+                {
+                    $group: {
+                        _id: null,
+                        categories: { $addToSet: "$category" }
+                    }
+                }
+            ])
+
+            return categories[0].categories
+
+        }
+        catch (err) {
+            console.log(err);
+            return err
+        }
+
+    }
+
+    getProductsView = async () => {
         try {
             return await productsModel.find().lean();
-        } catch(error){
-            console.log("cannot update user on mongo: "+ error);
+
+        } catch (err) {
+            return err
+        }
+    };
+
+    getProducts = async (filter, options) => {
+        try {
+            return await productsModel.paginate(filter, options);
+        } catch (err) {
+            return err
         }
     }
+
+
 
     getProductById = async (id) => {
         try {

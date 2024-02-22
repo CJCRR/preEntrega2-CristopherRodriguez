@@ -1,6 +1,6 @@
 const socketClient = io();
 
-socketClient.on("sendProducts", (listProducts) => {
+socketClient.on("enviodeproducts", (listProducts) => {
   updateProductList(listProducts);
 });
 

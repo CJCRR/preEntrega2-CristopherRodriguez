@@ -1,27 +1,27 @@
 import { cartModel } from "../models/carts.model.js"
-import ProductManager from "../mongooseManager/products.dao.js"
 
-const pm = new ProductManager()
 
 class CartManager {
 
     getCarts = async () => {
         try {
-            const carts = await cartModel.find();
+            const carts = await cartModel.find().lean();
             return carts;
-        } catch (error) {
-            console.error('Error al obtener los carritos:', error.message);
+        } catch (err) {
+            console.error('Error al obtener los carritos:', err.message);
             return [];
         }
     };
 
     getCartById = async (cartId) => {
+
         try {
-            const cart = await cartModel.findById(cartId);
+            const cart = await cartModel.findById(cartId)
+
             return cart;
-        } catch (error) {
-            console.error('Error al obtener el carrito por ID:', error.message);
-            return error;
+        } catch (err) {
+            console.error('Error al obtener el carrito por ID:', err.message);
+            return err;
         }
     };
 
@@ -34,9 +34,9 @@ class CartManager {
 
             const cart = await cartModel.create(cartData);
             return cart;
-        } catch (error) {
-            console.error('Error al crear el carrito:', error.message);
-            return error;
+        } catch (err) {
+            console.error('Error al crear el carrito:', err.message);
+            return err;
         }
     };
 
@@ -55,12 +55,32 @@ class CartManager {
             }
 
             return await cartModel.findById(cid);
-        } catch (error) {
-            console.error('Error al agregar el producto al carrito:', error.message);
-            return error;
+        } catch (err) {
+            console.error('Error al agregar el producto al carrito:', err.message);
+            return err;
         }
     };
 
+    deleteProductInCart = async (cid, products) => {
+        try {
+            return await cartModel.findOneAndUpdate(
+                { _id: cid },
+                { products },
+                { new: true })
+
+        } catch (err) {
+            return err
+        }
+
+    }
+
+    updateOneProduct = async (cid, products) => {
+
+        await cartModel.updateOne(
+            { _id: cid },
+            { products })
+        return await cartModel.findOne({ _id: cid })
+    }
 
 };
 

@@ -25,7 +25,10 @@ function updateProductList(listProducts) {
             <p class="card-text col">Stock: ${product.stock}</p>
             <p class="card-text col">Precio: ${product.price}</p>
           </div>
-          <a href="/realtimeproducts/${product._id}" class="btn btn-outline-primary">Ver más</a>
+          <div class="row">
+            <a href="/realtimeproducts/${product._id}" class="btn btn-outline-primary col">Ver más</a>
+            <a class="btn btn-outline-primary col">Agregar</a>
+          </div>
         </div>
       </div>
     </div>

@@ -25,8 +25,8 @@ router.get("/realtimeproducts/:pid", async (req, res) => {
   res.render('product', { product })
 });
 router.get('/carts', async (req, res) => {
-  const listCarts = await cm.getCarts()
-  res.render('carts', { listCarts });
+  const carrito = await cm.getCarts()
+  res.render('carts', { carrito });
 });
 
 router.get("/chat",(req,res)=>{

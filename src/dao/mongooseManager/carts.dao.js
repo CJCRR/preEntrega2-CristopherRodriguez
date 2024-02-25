@@ -17,12 +17,21 @@ class CartManager {
     getCartById = async (cartId) => {
         try {
             const cart = await cartModel.findById(cartId).populate('products._id').lean();
+            if (cart.products && cart.products.length > 0) {
+                cart.products = cart.products.map(product => {
+                    return {
+                        _id: product._id,
+                        quantity: product.quantity,
+                        ...product.product
+                    };
+                });
+            }
             return cart;
         } catch (err) {
             console.error('Error al obtener el carrito por ID:', err.message);
             return err;
         }
-    };
+    }
 
     addCart = async (products) => {
         try {

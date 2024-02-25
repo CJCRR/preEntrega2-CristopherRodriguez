@@ -2,7 +2,7 @@
 
 {{#each carrito}}
     <div class="cart-product">
-        <h4>Carrito #{{this._id}}</h4>
-        <h4>{{this.quantity}}</h4>
+        Carrito #
+        <a href=/carts/{{this._id}}>{{this._id}}</a>
     </div>
 {{/each}}

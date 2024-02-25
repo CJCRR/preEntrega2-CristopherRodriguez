@@ -1,4 +1,5 @@
 import { cartModel } from "../models/carts.model.js"
+import { productsModel } from "../models/products.model.js";
 
 
 class CartManager {
@@ -14,10 +15,8 @@ class CartManager {
     };
 
     getCartById = async (cartId) => {
-
         try {
-            const cart = await cartModel.findById(cartId)
-
+            const cart = await cartModel.findById(cartId).populate('products._id').lean();
             return cart;
         } catch (err) {
             console.error('Error al obtener el carrito por ID:', err.message);
@@ -76,12 +75,15 @@ class CartManager {
 
     updateOneProduct = async (cid, products) => {
 
-        await cartModel.updateOne(
-            { _id: cid },
-            { products })
-        return await cartModel.findOne({ _id: cid })
+        try {
+            return await cartModel.findOneAndUpdate(
+                { _id: cid },
+                { products },
+                { new: false })
+        }catch (err) {
+            return err
+        }
     }
-
 };
 
 export default CartManager;

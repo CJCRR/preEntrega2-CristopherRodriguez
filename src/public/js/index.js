@@ -61,5 +61,12 @@ document.getElementById("delete-btn").addEventListener("click", (e) => {
   const deleteId = deleteIdInput.value;
   socketClient.emit("deleteProduct", deleteId);
   deleteIdInput.value = "";
+  Swal.fire({
+    position: "center",
+    icon: "success",
+    title: "Producto eliminado",
+    showConfirmButton: false,
+    timer: 2000,
+  });
 });
 

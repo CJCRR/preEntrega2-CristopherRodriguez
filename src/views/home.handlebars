@@ -3,7 +3,7 @@
   <h1>Lista de todos los productos</h1>
   </div>
   <div class="row row-cols-1 row-cols-md-3 g-4">
-    {{#each listProducts}}
+    {{#each docs}}
     <div class="col">
       <div class="card h-100" id={{this.id}}>
         <img src={{this.thumbnail}} class="card-img-top" alt={{this.title}}>
@@ -26,6 +26,14 @@
     </div>
     {{/each}}
   </div>
+  <div>
+    {{#if hasPrevPage}}
+    <a href="{{ prevLink }}">Anterior</a>
+    {{/if}}
+    {{#if hasNextPage}}
+    <a href="{{ nextLink }}">Siguiente</a>
+    {{/if}}
+</div>
 </div>
 
 

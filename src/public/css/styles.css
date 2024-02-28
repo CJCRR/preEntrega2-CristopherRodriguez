@@ -4,6 +4,18 @@
   box-sizing: border-box;
 }
 
+.paginate {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+.paginate .prevNext {
+  text-decoration: none;
+  color: black;
+  font-size: 30px;
+}
+
 .realTimeProducts h1 {
   text-align: center;
 }

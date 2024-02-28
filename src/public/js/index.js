@@ -52,6 +52,13 @@ form.addEventListener("submit", (evt) => {
   let status = true; 
   socketClient.emit("addProduct", 
   {title, description, stock, thumbnail, category, price, code, status});
+  Swal.fire({
+    position: "center",
+    icon: "success",
+    title: "Producto agregado",
+    showConfirmButton: false,
+    timer: 2000,
+  });
  
   form.reset();
 });

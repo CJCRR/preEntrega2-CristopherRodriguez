@@ -26,12 +26,12 @@
     </div>
     {{/each}}
   </div>
-  <div>
+  <div class="paginate">
     {{#if hasPrevPage}}
-    <a href="{{ prevLink }}">Anterior</a>
+    <a href="{{ prevLink }}" class="prevNext">Anterior</a>
     {{/if}}
     {{#if hasNextPage}}
-    <a href="{{ nextLink }}">Siguiente</a>
+    <a href="{{ nextLink }}" class="prevNext">Siguiente</a>
     {{/if}}
 </div>
 </div>
